@@ -4,25 +4,21 @@ using PowerShellBinaryDemo.Library;
 
 namespace PowerShellBinaryDemo;
 
-[Cmdlet(VerbsDiagnostic.Test, "PowerShellBinary")]
-public sealed class CmdletTestPowerShellBinary : AsyncPSCmdlet {
+[Cmdlet(VerbsDiagnostic.Test, "PowerShellBinaryStatic")]
+public sealed class CmdletTestPowerShellBinaryStatic : AsyncPSCmdlet {
     // let's create a logger, so we can write messages to the console
     private InternalLogger InternalLogger = null!;
     // let's create a TestClass, so we can call the TestMethod from different sections
-    private TestClass TestClass = null!;
     protected override Task BeginProcessingAsync() {
         // Initialize the logger to be able to see verbose, warning, debug, error, progress, and information messages.
-        InternalLogger = new InternalLogger();
+        InternalLogger = new InternalLogger(false);
 
-        // Initialize the InternalLoggerPowerShell to be able to write messages to the console.
-        // We need to pass the InternalLogger, so we can write messages to the console from Library
+        // Assign the InternalLogger to the static Logger in LoggingMessages
+        LoggingMessages.Logger = InternalLogger;
         var internalLoggerPowerShell = new InternalLoggerPowerShell(InternalLogger, this.WriteVerbose, this.WriteWarning, this.WriteDebug, this.WriteError, this.WriteProgress, this.WriteInformation);
 
         // Write a verbose message to the console.
         InternalLogger.WriteVerbose("Test Begin Section");
-
-        // Initialize the TestClass to be able to call the TestMethod.
-        TestClass = new TestClass(InternalLogger);
 
         return Task.CompletedTask;
     }
@@ -31,7 +27,7 @@ public sealed class CmdletTestPowerShellBinary : AsyncPSCmdlet {
         InternalLogger.WriteVerbose("Test Processing Section");
 
         // Write the result of the TestMethod to the console.
-        WriteObject(TestClass.TestMethod());
+        WriteObject(TestClassStatic.TestMethod());
 
         return Task.CompletedTask;
     }

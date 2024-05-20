@@ -1,32 +1,39 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFrameworks>net472;netstandard2.0;net7.0;net8.0</TargetFrameworks>
-    <Description>Demo PowerShell Binary</Description>
-    <AssemblyName>PowerShellBinaryDemo</AssemblyName>
-    <AssemblyTitle>PowerShellBinaryDemo</AssemblyTitle>
-    <VersionPrefix>0.1.0</VersionPrefix>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <Company>Evotec</Company>
-    <Authors>Przemyslaw Klys</Authors>
-    <LangVersion>latest</LangVersion>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFrameworks>net472;netstandard2.0;net7.0;net8.0</TargetFrameworks>
+        <Description>Demo PowerShell Binary</Description>
+        <AssemblyName>PowerShellBinaryDemo</AssemblyName>
+        <AssemblyTitle>PowerShellBinaryDemo</AssemblyTitle>
+        <VersionPrefix>0.1.0</VersionPrefix>
+        <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+        <Company>Evotec</Company>
+        <Authors>Przemyslaw Klys</Authors>
+        <LangVersion>latest</LangVersion>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="PowerShellStandard.Library" Version="5.1.1" PrivateAssets="all" />
-  </ItemGroup>
+    <!-- Reference Library with all stuff -->
+    <ItemGroup>
+        <ProjectReference
+            Include="..\PowerShellBinaryDemo.Library\PowerShellBinaryDemo.Library.csproj" />
+    </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\PowerShellBinaryDemo.Library\PowerShellBinaryDemo.Library.csproj" />
-  </ItemGroup>
+    <!-- Initialize PowerShell Library -->
+    <ItemGroup>
+        <PackageReference Include="PowerShellStandard.Library" Version="5.1.1" PrivateAssets="all" />
+    </ItemGroup>
 
-  <Target Name="RemoveFilesAfterBuild" AfterTargets="Build">
-    <Delete Files="$(OutDir)System.Management.Automation.dll" />
-    <Delete Files="$(OutDir)System.Management.dll" />
-  </Target>
+    <!-- Make sure the output DLL's from library are included in the output -->
+    <PropertyGroup>
+        <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    </PropertyGroup>
 
-  <!-- <PropertyGroup>
-    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
-  </PropertyGroup> -->
+    <!-- We need to remove PowerShell conflicting libraries as it will break output -->
+    <Target Name="RemoveFilesAfterBuild" AfterTargets="Build">
+        <Delete Files="$(OutDir)System.Management.Automation.dll" />
+        <Delete Files="$(OutDir)System.Management.dll" />
+    </Target>
+
 </Project>
