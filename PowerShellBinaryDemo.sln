@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34902.65
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PowerShellBinaryDemo", "PowerShellBinaryDemo\PowerShellBinaryDemo.csproj", "{456DD5FC-270A-4FD3-91DC-2287F311B04B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowerShellBinaryDemo.Library", "PowerShellBinaryDemo.Library\PowerShellBinaryDemo.Library.csproj", "{882D5C9B-79FA-4E23-8E2F-E01EC8EEBF24}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{456DD5FC-270A-4FD3-91DC-2287F311B04B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{456DD5FC-270A-4FD3-91DC-2287F311B04B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{456DD5FC-270A-4FD3-91DC-2287F311B04B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{456DD5FC-270A-4FD3-91DC-2287F311B04B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{882D5C9B-79FA-4E23-8E2F-E01EC8EEBF24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{882D5C9B-79FA-4E23-8E2F-E01EC8EEBF24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{882D5C9B-79FA-4E23-8E2F-E01EC8EEBF24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{882D5C9B-79FA-4E23-8E2F-E01EC8EEBF24}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {77EA714E-A996-49DF-A966-C888B9C1661E}
+	EndGlobalSection
+EndGlobal
