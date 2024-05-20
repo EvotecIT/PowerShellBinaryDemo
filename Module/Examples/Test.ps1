@@ -2,7 +2,7 @@
 
 Write-Host -ForegroundColor Green "Testing Test-PowerShellBinary"
 
-Test-PowerShellBinary -Verbose
+Test-PowerShellBinary -Verbose | Format-Table
 
 Write-Host -ForegroundColor Green "Testing Test-PowerShellBinaryStatic"
 

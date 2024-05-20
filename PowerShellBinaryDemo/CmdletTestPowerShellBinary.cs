@@ -1,4 +1,4 @@
-﻿using System.Management.Automation;
+using System.Management.Automation;
 using System.Threading.Tasks;
 using PowerShellBinaryDemo.Library;
 
@@ -32,6 +32,17 @@ public sealed class CmdletTestPowerShellBinary : AsyncPSCmdlet {
 
         // Write the result of the TestMethod to the console.
         WriteObject(TestClass.TestMethod());
+
+        var output = TestClass.TestMethodWithEnumerable(["test", "test2"], "Output", true);
+        // this won't display Verbose or anything
+        //WriteObject(output, true);
+
+        // this will display Verbose
+        foreach (var item in output) {
+            WriteObject(item);
+        }
+
+        //TestClass.TestMethodWithEnumerable1(["test", "test2"], "Output", true);
 
         return Task.CompletedTask;
     }

@@ -1,4 +1,7 @@
-﻿namespace PowerShellBinaryDemo.Library;
+using System.Collections.Generic;
+using System.IO;
+
+namespace PowerShellBinaryDemo.Library;
 
 public class TestClass : LoggingMessages {
     public TestClass(InternalLogger? internalLogger = null) {
@@ -13,4 +16,26 @@ public class TestClass : LoggingMessages {
         Logger.WriteError("Test Error Message from inside the library");
         return "Hello World!";
     }
+
+    public IEnumerable<ConversionResult> TestMethodWithEnumerable(string[] emlFile, string outputFolder, bool force) {
+        LoggingMessages.Logger.WriteVerbose("TestMethodWithEnumerable");
+        Logger.WriteVerbose("Converting some files to some files");
+        foreach (var eml in emlFile) {
+            var fileName = Path.GetFileNameWithoutExtension(eml);
+            var targetFile = Path.Combine(outputFolder, $"{fileName}.msg");
+            var msg = new ConversionResult() {
+                EmlFile = eml,
+                MsgFile = targetFile,
+                Success = true
+            };
+            yield return msg;
+        }
+    }
+}
+
+public class ConversionResult {
+    public string EmlFile { get; set; }
+    public string MsgFile { get; set; }
+    public bool Success { get; set; }
+    public string? ErrorMessage { get; set; }
 }
