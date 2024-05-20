@@ -42,8 +42,6 @@ public sealed class CmdletTestPowerShellBinary : AsyncPSCmdlet {
             WriteObject(item);
         }
 
-        //TestClass.TestMethodWithEnumerable1(["test", "test2"], "Output", true);
-
         return Task.CompletedTask;
     }
     protected override Task EndProcessingAsync() {
