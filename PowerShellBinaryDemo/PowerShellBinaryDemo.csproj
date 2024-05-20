@@ -36,4 +36,26 @@
         <Delete Files="$(OutDir)System.Management.dll" />
     </Target>
 
+    <PropertyGroup>
+        <!-- This is needed for XmlDoc2CmdletDoc to generate a PowerShell documentation file. -->
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <!-- This is needed for XmlDoc2CmdletDoc to generate a PowerShell documentation file. -->
+        <PackageReference Include="MatejKafka.XmlDoc2CmdletDoc" Version="0.4.2">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Using Include="System.Collections" />
+        <Using Include="System.Management.Automation" />
+        <Using Include="System.Threading.Tasks" />
+        <Using Include="System.Collections.Concurrent" />
+        <Using Include="System.Threading" />
+        <Using Include="System" />
+    </ItemGroup>
+
 </Project>
