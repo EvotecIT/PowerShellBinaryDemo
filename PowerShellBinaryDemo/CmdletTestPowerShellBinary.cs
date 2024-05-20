@@ -6,9 +6,9 @@ namespace PowerShellBinaryDemo;
 
 [Cmdlet(VerbsDiagnostic.Test, "PowerShellBinary")]
 public sealed class CmdletTestPowerShellBinary : AsyncPSCmdlet {
-    // let's create a logger so we can write messages to the console
+    // let's create a logger, so we can write messages to the console
     private InternalLogger InternalLogger;
-    // let's create a TestClass so we can call the TestMethod from different sections
+    // let's create a TestClass, so we can call the TestMethod from different sections
     private TestClass TestClass;
     protected override Task BeginProcessingAsync() {
         // Initialize the logger to be able to see verbose, warning, debug, error, progress, and information messages.
