@@ -37,17 +37,9 @@
     </Target>
 
     <PropertyGroup>
-        <!-- This is needed for XmlDoc2CmdletDoc to generate a PowerShell documentation file. -->
+        <!-- PowerForge consumes compiler XML documentation when generating cmdlet help. -->
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
     </PropertyGroup>
-
-    <ItemGroup>
-        <!-- This is needed for XmlDoc2CmdletDoc to generate a PowerShell documentation file. -->
-        <PackageReference Include="MatejKafka.XmlDoc2CmdletDoc" Version="0.4.2">
-            <PrivateAssets>all</PrivateAssets>
-            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-        </PackageReference>
-    </ItemGroup>
 
     <ItemGroup>
         <Using Include="System.Collections" />
