@@ -1,4 +1,4 @@
-@{
+﻿@{
     AliasesToExport      = @('*')
     Author               = 'Przemyslaw Klys'
     CmdletsToExport      = @('Test-PowerShellBinary', 'Test-PowerShellBinaryNative', 'Test-PowerShellBinaryStatic')
